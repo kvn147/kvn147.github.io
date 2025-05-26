@@ -11,7 +11,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <Router>
+    <Router basename='/'>
       <div className="Portfolio min-h-screen w-screen flex flex-col">
         <Navbar />
         <Routes>
