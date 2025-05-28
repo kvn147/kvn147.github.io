@@ -38,7 +38,7 @@ function Contacts() {
             {/* Email Link */}
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 relative overflow-hidden">
-                <Link to="mailto:kevinn24@uw.edu" target="_blank" rel="noopener noreferrer">
+                <Link to="mailto:kevnguyen49@gmail.com" target="_blank" rel="noopener noreferrer">
                   <img src={mail} alt="Mail" className="w-7 h-7 filter brightness-0" />
                 </Link>
               </div>
