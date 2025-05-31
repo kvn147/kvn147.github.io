@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DropdownMenu from './dropdown-menu';
 
 function Navbar() {
   return (
@@ -17,7 +18,7 @@ function Navbar() {
                 </div>
             </div>
             <div className="sm:hidden">
-               
+               <DropdownMenu />
             </div>
         </div>
   );

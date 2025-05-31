@@ -4,7 +4,7 @@ export const projects = [
     title: "Valorant at UW Website",
     description: "Website built for Valorant club at the University of Washington.",
     longDescription: "Built with React and Node.js, this website provides essential information about the club as well to go along with its clean design.",
-    technologies: ["React", "Node.js", "Tailwind CSS"],
+    technologies: ["Javascript", "React", "Node.js", "Tailwind CSS", "Sanity"],
     githubUrl: "https://github.com/webimpactuw/valorant-uw",
     liveUrl: "https://webimpactuw.github.io/valorant-uw/", // Live URL for the website
     imageUrl: "/images/valo.png", // Add images to public/images/
@@ -19,10 +19,30 @@ export const projects = [
     technologies: ["Python", "Selenium", "BeautifulSoup", "DawgPath API"],
     githubUrl: "https://github.com/swecc-uw/swecc-course-scraper",
     liveUrl: null,
-    imageUrl: "/images/project3.jpg",
     featured: true,
     category: "Open Source"
-  }
+  },
+  {
+    id: 3,
+    title: "Fall Detection System",
+    description: "A fall detection system using a microcontroller and accelerometer to detect sudden falls.",
+    longDescription: "A fall detection system using a microcontroller and accelerometer to detect sudden falls.",
+    technologies: ["C", "IAR Workbench IDE", "Hardware"],
+    githubUrl: "https://github.com/kvn147/Fall-Detection-System",
+    liveUrl: null,
+    featured: true,
+    category: "Embedded Systems",
+  },
+  {
+    id: 4,
+    title: "Personal Portfolio Website",
+    description: "My personal portfolio website showcasing my projects and skills.",
+    longDescription: "A personal portfolio website built with React, showcasing my projects, skills, and experiences.",
+    technologies: ["Javascript", "React+Vite", "Tailwind CSS"],
+    githubUrl: "https://github.com/kvn147/kvn147.github.io",
+    liveUrl: null,
+    featured: false,
+    category: "Web Development"}
 ];
 
 // Helper function to get featured projects
