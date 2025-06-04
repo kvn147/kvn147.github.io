@@ -12,38 +12,38 @@ function Contacts() {
           <div className="inline-flex flex-col justify-start items-start gap-14">
             <div className="flex flex-col justify-start items-start gap-10">
               <div className="w-96 justify-start text-zinc-800 text-3xl font-semibold font-ubuntu leading-10">Let's connect</div>
-              <div className="w-96 justify-start text-zinc-800 text-base font-normal font-ubuntu leading-relaxed">Feel free to reach out to me through any of the platforms below. I'm always open to discussing new opportunities, collaborations, or just having a chat.</div>
+              <div className="w-96 justify-start text-zinc-800 text-base font-normal font-ubuntu leading-relaxed">Feel free to reach out to me through any of the platforms below. I'm open to discussing new opportunities, collaborations, or just having a chat!</div>
             </div>
 
             {/* LinkedIn Link */}
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 relative overflow-hidden">
-                <Link to="https://www.linkedin.com/in/kevin1nguyen" target="_blank" rel="noopener noreferrer">
-                  <img src={linkedin} alt="LinkedIn" className="w-7 h-7 filter brightness-0" />
-                </Link>
+            <Link to="https://www.linkedin.com/in/kevin1nguyen" target="_blank" rel="noopener noreferrer">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 relative overflow-hidden">
+                    <img src={linkedin} alt="LinkedIn" className="w-7 h-7 filter brightness-0" />
+                </div>
+                <p className="text-zinc-800 text-base font-normal font-ubuntu">linkedin.com/kevin1nguyen</p>
               </div>
-              <p className="text-zinc-800 text-base font-normal font-ubuntu">linkedin.com/kevin1nguyen</p>
-            </div>
+            </Link>
 
             {/* GitHub Link */}
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 relative overflow-hidden">
-                <Link to="https://www.github.com/kvn147" target="_blank" rel="noopener noreferrer">
-                  <img src={github} alt="GitHub" className="w-7 h-7 filter brightness-0" />
-                </Link>
+            <Link to="https://www.github.com/kvn147" target="_blank" rel="noopener noreferrer">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 relative overflow-hidden">
+                    <img src={github} alt="GitHub" className="w-7 h-7 filter brightness-0" />
+                </div>
+                <p className="text-zinc-800 text-base font-normal font-ubuntu">github.com/kvn147</p>
               </div>
-              <p className="text-zinc-800 text-base font-normal font-ubuntu">github.com/kvn147</p>
-            </div>
+            </Link>
 
             {/* Email Link */}
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 relative overflow-hidden">
-                <Link to="mailto:kevnguyen49@gmail.com" target="_blank" rel="noopener noreferrer">
+            <Link to="mailto:kevnguyen49@gmail.com" target="_blank" rel="noopener noreferrer">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 relative overflow-hidden">
                   <img src={mail} alt="Mail" className="w-7 h-7 filter brightness-0" />
-                </Link>
+                </div>
+              <p className="text-zinc-800 text-base font-normal font-ubuntu">kevnguyen49 [at] gmail [dot] com</p>
               </div>
-              <p className="text-zinc-800 text-base font-normal font-ubuntu">kevnguyen49@gmail.com</p>
-            </div>
+            </Link>
           </div>
 
           {/* Contact Form */}

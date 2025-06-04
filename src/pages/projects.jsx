@@ -78,7 +78,7 @@ function Projects() {
             Interested in working together?
           </h2>
           <p className="text-lg font-ubuntu text-gray-600 mb-8">
-            I'm always open to discussing new projects and opportunities.
+            I'm always interested in new projects and opportunities to collaborate!
           </p>
           <a
             href="/contacts"
