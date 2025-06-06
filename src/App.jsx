@@ -6,12 +6,14 @@ import Contacts from './pages/contacts.jsx'
 import Projects from './pages/projects.jsx'
 import Home from './pages/home.jsx'
 import Footer from './components/footer.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <Router basename='/'>
+      <ScrollToTop />
       <div className="Portfolio min-h-screen w-screen flex flex-col">
         <Navbar />
         <Routes>
