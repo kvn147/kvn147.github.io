@@ -22,7 +22,7 @@ function Header() {
 
 function About() {
   return (
-    <div className="relative min-h-[95vh] bg-gray-100 text-black font-ubuntu shadow-xl flex items-center">
+    <div className="relative min-h-[95vh] bg-gray-100 text-black font-ubuntu shadow-xl flex items-center z-10">
       <div className="container mx-auto px-4 py-10 flex flex-col lg:flex-row justify-between items-center gap-10">
         <div className="w-full lg:w-3/5 flex flex-col justify-center items-start gap-6">
           <div className="text-4xl font-semibold">About Me</div>

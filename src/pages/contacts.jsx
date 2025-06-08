@@ -66,50 +66,50 @@ function Contacts() {
   };
 
   return (
-    <div data-property="Desktop" className="self-stretch px-24 pb-16 bg-white inline-flex flex-col justify-start items-center gap-2.5">
-      <div className="pt-16 border-t-2 border-black/20 flex flex-col justify-start items-center gap-16">
-        <div className="inline-flex justify-start items-start gap-48">
-          <div className="inline-flex flex-col justify-start items-start gap-14">
-            <div className="flex flex-col justify-start items-start gap-10">
-              <div className="w-96 justify-start text-zinc-800 text-3xl font-semibold font-ubuntu leading-10">Let's connect</div>
-              <div className="w-96 justify-start text-zinc-800 text-base font-normal font-ubuntu leading-relaxed">Feel free to reach out to me through any of the platforms below. I'm open to discussing new opportunities, collaborations, or just having a chat!</div>
+    <div data-property="Desktop" className="self-stretch px-4 md:px-24 pb-16 bg-white flex flex-col justify-start items-center gap-2.5">
+      <div className="pt-16 border-t-2 border-black/20 flex flex-col justify-start items-center gap-16 w-full">
+        <div className="flex flex-col md:inline-flex md:flex-row justify-start items-center md:items-start gap-12 md:gap-48 w-full">
+          <div className="flex flex-col justify-start items-center md:items-start gap-6 lg:gap-10 w-full md:w-auto order-1">
+            <div className="flex flex-col justify-start items-center md:items-start gap-10">
+              <div className="w-full md:w-96 justify-start text-zinc-800 text-3xl font-semibold font-ubuntu leading-10 text-center md:text-left">Let's connect</div>
+              <div className="w-full md:w-96 justify-start text-zinc-800 text-base font-normal font-ubuntu leading-relaxed text-center md:text-left">Feel free to reach out to me through any of the platforms below. I'm open to discussing new opportunities, collaborations, or just having a chat!</div>
             </div>
 
             {/* LinkedIn Link */}
             <Link to="https://www.linkedin.com/in/kevin1nguyen" target="_blank" rel="noopener noreferrer">
-              <div className="flex items-align-center gap-3">
+              <div className="flex items-center gap-1 lg:gap-3">
                 <div className="w-9 h-9 relative overflow-hidden">
                     <img src={linkedin} alt="LinkedIn" className="w-7 h-7 filter brightness-0" />
                 </div>
-                <p className="text-zinc-800 text-base font-normal font-ubuntu">linkedin.com/kevin1nguyen</p>
+                <p className="text-zinc-800 text-sm lg:text-base font-normal font-ubuntu">linkedin.com/kevin1nguyen</p>
               </div>
             </Link>
 
             {/* GitHub Link */}
             <Link to="https://www.github.com/kvn147" target="_blank" rel="noopener noreferrer">
-              <div className="flex items-align-center gap-3">
+              <div className="flex items-center gap-1 lg:gap-3">
                 <div className="w-9 h-9 relative overflow-hidden">
                     <img src={github} alt="GitHub" className="w-7 h-7 filter brightness-0" />
                 </div>
-                <p className="text-zinc-800 text-base font-normal font-ubuntu">github.com/kvn147</p>
+                <p className="text-zinc-800 text-sm lg:text-base font-normal font-ubuntu">github.com/kvn147</p>
               </div>
             </Link>
 
             {/* Email Link */}
             <Link to="mailto:kevnguyen49@gmail.com" target="_blank" rel="noopener noreferrer">
-              <div className="flex items-align-center gap-3">
+              <div className="flex items-center gap-1 lg:gap-3">
                 <div className="w-9 h-9 relative overflow-hidden">
                   <img src={mail} alt="Mail" className="w-7 h-7 filter brightness-0" />
                 </div>
-              <p className="text-zinc-800 text-base font-normal font-ubuntu">kevnguyen49 [at] gmail [dot] com</p>
+              <p className="text-zinc-800 text-sm lg:text-base font-normal font-ubuntu">kevnguyen49 [at] gmail [dot] com</p>
               </div>
             </Link>
           </div>
 
           {/* Contact Form */}
-          <div className="inline-flex flex-col justify-start items-start gap-10">
-            <form onSubmit={handleSubmit} className="flex flex-col justify-start items-start gap-5 w-full">
-              <div className="w-[530px] px-7 py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5">
+          <div className="flex flex-col justify-start items-center md:items-start gap-10 w-full md:w-auto order-2">
+            <form onSubmit={handleSubmit} className="flex flex-col justify-start items-center md:items-start gap-5 w-full">
+              <div className="w-full md:w-[530px] px-7 py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5 rounded-lg">
                 <input 
                   type="text" 
                   name="name"
@@ -120,7 +120,7 @@ function Contacts() {
                   required
                 />
               </div>
-              <div className="w-[530px] px-7 py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5">
+              <div className="w-full md:w-[530px] px-7 py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5 rounded-lg">
                 <input 
                   type="email" 
                   name="email"
@@ -131,7 +131,7 @@ function Contacts() {
                   required
                 />
               </div>
-              <div className="w-[530px] px-7 py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5">
+              <div className="w-full md:w-[530px] px-7 py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5 rounded-lg">
                 <textarea 
                   name="message"
                   value={formData.message}
@@ -153,7 +153,7 @@ function Contacts() {
 
               <button 
                 type="submit" 
-                className={`px-10 py-2 ${status.submitting ? 'bg-zinc-500' : 'bg-zinc-800'} inline-flex justify-start items-start gap-2.5`}
+                className={`w-full md:w-auto px-10 py-2 ${status.submitting ? 'bg-zinc-500' : 'bg-zinc-800'} flex justify-center items-center gap-2.5`}
                 disabled={status.submitting}
               >
                 <div className="text-center justify-center text-white text-xl font-semibold font-ubuntu leading-loose">

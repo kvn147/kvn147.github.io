@@ -38,7 +38,7 @@ export const projects = [
     title: "Personal Portfolio Website",
     description: "My personal portfolio website showcasing my projects and skills.",
     longDescription: "A personal portfolio website built with React, showcasing my projects, skills, and experiences.",
-    technologies: ["Javascript", "React+Vite", "Tailwind CSS"],
+    technologies: ["Javascript", "React+Vite", "Express.js", "Tailwind CSS"],
     githubUrl: "https://github.com/kvn147/kvn147.github.io",
     liveUrl: null,
     featured: false,
