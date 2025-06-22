@@ -52,10 +52,10 @@ const limiter = rateLimit({
 });
 
 // Apply rate limiting to the contact endpoint
-app.use('/api/contact', limiter);
+app.use('/contact', limiter);
 
 // Contact form endpoint - Save to MongoDB
-app.post('/api/contact', async (req, res) => {
+app.post('/contact', async (req, res) => {
   try {
     await connectToDatabase();
     
@@ -106,7 +106,7 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // Get all contacts (admin endpoint)
-app.get('/api/contacts', async (req, res) => {
+app.get('/contacts', async (req, res) => {
   try {
     await connectToDatabase();
     
@@ -124,7 +124,7 @@ app.get('/api/contacts', async (req, res) => {
 });
 
 // Mark contact as read
-app.patch('/api/contacts/:id/read', async (req, res) => {
+app.patch('/contacts/:id/read', async (req, res) => {
   try {
     await connectToDatabase();
     
@@ -148,7 +148,7 @@ app.patch('/api/contacts/:id/read', async (req, res) => {
 });
 
 // Health check endpoint
-app.get('/api/health', async (req, res) => {
+app.get('/health', async (req, res) => {
   try {
     await connectToDatabase();
     res.status(200).json({ 
