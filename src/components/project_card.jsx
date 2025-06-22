@@ -13,7 +13,7 @@ function ProjectCard({ project }) {
             className="w-full h-full object-cover"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+          <div className="w-full h-full bg-gradient-to-br from-[#ee7752] to-[#e73c7e] flex items-center justify-center">
             <span className="text-white text-2xl font-ubuntu font-bold">
               {project.title.charAt(0)}
             </span>
@@ -25,7 +25,7 @@ function ProjectCard({ project }) {
       <div className="p-6">
         {/* Category Badge */}
         <div className="inline-block mb-3">
-          <span className="px-3 py-1 bg-green-100 text-green-800 text-sm font-ubuntu font-medium rounded-full">
+          <span className="px-3 py-1 bg-[#23d5ab]/20 text-[#23a6d5] text-sm font-ubuntu font-medium rounded-full">
             {project.category}
           </span>
         </div>
@@ -76,7 +76,7 @@ function ProjectCard({ project }) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 px-4 py-2 bg-green-500 text-white text-center font-ubuntu font-medium rounded transition-colors duration-200 hover:bg-green-600"
+              className="flex-1 px-4 py-2 bg-[#23a6d5] text-white text-center font-ubuntu font-medium rounded transition-colors duration-200 hover:bg-[#23a6d5]/80"
             >
               Live Demo
             </a>

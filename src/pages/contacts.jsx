@@ -77,31 +77,31 @@ function Contacts() {
 
             {/* LinkedIn Link */}
             <Link to="https://www.linkedin.com/in/kevin1nguyen" target="_blank" rel="noopener noreferrer">
-              <div className="flex items-center gap-1 lg:gap-3">
+              <div className="flex items-center gap-1 lg:gap-3 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
                 <div className="w-9 h-9 relative overflow-hidden">
                     <img src={linkedin} alt="LinkedIn" className="w-7 h-7 filter brightness-0" />
                 </div>
-                <p className="text-zinc-800 text-sm lg:text-base font-normal font-ubuntu">linkedin.com/kevin1nguyen</p>
+                <p className="text-zinc-800 text-sm lg:text-base font-normal font-ubuntu hover:text-[#23a6d5]">linkedin.com/kevin1nguyen</p>
               </div>
             </Link>
 
             {/* GitHub Link */}
             <Link to="https://www.github.com/kvn147" target="_blank" rel="noopener noreferrer">
-              <div className="flex items-center gap-1 lg:gap-3">
+              <div className="flex items-center gap-1 lg:gap-3 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
                 <div className="w-9 h-9 relative overflow-hidden">
                     <img src={github} alt="GitHub" className="w-7 h-7 filter brightness-0" />
                 </div>
-                <p className="text-zinc-800 text-sm lg:text-base font-normal font-ubuntu">github.com/kvn147</p>
+                <p className="text-zinc-800 text-sm lg:text-base font-normal font-ubuntu hover:text-[#23a6d5]">github.com/kvn147</p>
               </div>
             </Link>
 
             {/* Email Link */}
             <Link to="mailto:kevnguyen49@gmail.com" target="_blank" rel="noopener noreferrer">
-              <div className="flex items-center gap-1 lg:gap-3">
+              <div className="flex items-center gap-1 lg:gap-3 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
                 <div className="w-9 h-9 relative overflow-hidden">
                   <img src={mail} alt="Mail" className="w-7 h-7 filter brightness-0" />
                 </div>
-              <p className="text-zinc-800 text-sm lg:text-base font-normal font-ubuntu">kevnguyen49 [at] gmail [dot] com</p>
+              <p className="text-zinc-800 text-sm lg:text-base font-normal font-ubuntu hover:text-[#23a6d5]">kevnguyen49 [at] gmail [dot] com</p>
               </div>
             </Link>
           </div>
@@ -148,7 +148,7 @@ function Contacts() {
               )}
               
               {status.success && (
-                <div className="w-full text-green-500 text-base font-ubuntu">Message sent successfully!</div>
+                <div className="w-full text-[#23d5ab] text-base font-ubuntu">Message sent successfully!</div>
               )}
 
               <button 

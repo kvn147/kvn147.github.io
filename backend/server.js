@@ -1,8 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const nodemailer = require('nodemailer');
+const mongoose = require('mongoose');
 const rateLimit = require('express-rate-limit');
 require('dotenv').config();
+
+// Import the Contact model
+const Contact = require('./models/contact'); // Capital C
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -10,6 +13,16 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// MongoDB connection
+mongoose.connect(process.env.MONGODB_URI)
+.then(() => {
+  console.log('Connected to MongoDB');
+  console.log('Database:', mongoose.connection.name);
+})
+.catch((error) => {
+  console.error('MongoDB connection error:', error);
+});
 
 // Rate limiting
 const limiter = rateLimit({
@@ -21,18 +34,7 @@ const limiter = rateLimit({
 // Apply rate limiting to the contact endpoint
 app.use('/api/contact', limiter);
 
-// Create nodemailer transporter - fixed function name
-const createTransporter = () => {
-  return nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PWD // Updated to match .env variable name
-    }
-  });
-};
-
-// Contact form endpoint
+// Contact form endpoint - Save to MongoDB
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -52,60 +54,79 @@ app.post('/api/contact', async (req, res) => {
   }
 
   try {
-    const transporter = createTransporter();
+    // Create new contact document
+    const newContact = new Contact({
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      message: message.trim()
+    });
 
-    // Email options - sending to yourself
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // Your email to receive messages
-      subject: `Portfolio Contact Form: Message from ${name}`,
-      html: `
-        <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-        <hr>
-        <p><small>This message was sent from your portfolio contact form.</small></p>
-      `,
-      replyTo: email // This allows you to reply directly to the sender
-    };
+    // Save to database
+    await newContact.save();
 
-    // Send email
-    await transporter.sendMail(mailOptions);
+    console.log('New contact submission saved:', {
+      name: newContact.name,
+      email: newContact.email,
+      timestamp: newContact.createdAt
+    });
 
-    // Optional: Send confirmation email to the sender
-    const confirmationOptions = {
-      from: process.env.EMAIL_USER,
-      to: email,
-      subject: 'Thank you for contacting me!',
-      html: `
-        <h3>Thank you for your message!</h3>
-        <p>Hi ${name},</p>
-        <p>Thank you for reaching out through my portfolio. I've received your message and will get back to you as soon as possible.</p>
-        <p><strong>Your message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-        <p>Best regards,<br>Kevin Nguyen</p>
-      `
-    };
-
-    await transporter.sendMail(confirmationOptions);
-
-    res.status(200).json({ 
-      message: 'Email sent successfully' 
+    res.status(200).json({
+      message: 'Your message has been saved successfully! I will get back to you soon.',
+      id: newContact._id
     });
 
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Error saving contact submission:', error);
     res.status(500).json({ 
-      error: 'Failed to send email' 
+      error: 'Failed to save your message :( Please try again.'
+    });
+  }
+});
+
+// Get all contacts (admin endpoint)
+app.get('/api/contacts', async (req, res) => {
+  try {
+    const contacts = await Contact.find()
+      .sort({ createdAt: -1 }) // Sort by newest first
+      .limit(100); // Limit to last 100 contacts
+
+    res.status(200).json(contacts);
+  } catch (error) {
+    console.error('Error fetching contacts:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch contacts' 
+    });
+  }
+});
+
+// Mark contact as read
+app.patch('/api/contacts/:id/read', async (req, res) => {
+  try {
+    const contact = await Contact.findByIdAndUpdate(
+      req.params.id,
+      { isRead: true },
+      { new: true }
+    );
+
+    if (!contact) {
+      return res.status(404).json({ error: 'Contact not found' });
+    }
+
+    res.status(200).json(contact);
+  } catch (error) {
+    console.error('Error updating contact:', error);
+    res.status(500).json({ 
+      error: 'Failed to update contact' 
     });
   }
 });
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  res.status(200).json({ status: 'Server is running!' });
+  res.status(200).json({ 
+    status: 'Server is running!',
+    database: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected'
+  });
 });
 
 app.listen(PORT, () => {

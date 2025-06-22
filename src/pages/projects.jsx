@@ -40,7 +40,7 @@ function Projects() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-3 font-ubuntu font-medium rounded-full transition-all duration-200 ${
                   selectedCategory === category
-                    ? 'bg-green-500 text-white shadow-lg'
+                    ? 'bg-[#23a6d5] text-white shadow-lg'
                     : 'bg-white text-gray-700 hover:bg-gray-100 shadow-md border border-gray-200'
                 }`}
               >
@@ -82,7 +82,7 @@ function Projects() {
           </p>
           <a
             href="/contacts"
-            className="inline-block px-8 py-3 bg-green-500 text-white font-ubuntu font-semibold rounded-lg transition-colors duration-200 hover:bg-green-600"
+            className="inline-block px-8 py-3 bg-[#e73c7e] text-white font-ubuntu font-semibold rounded-lg transition-colors duration-200 hover:bg-[#e73c7e]/80"
           >
             Get In Touch
           </a>
