@@ -5,10 +5,9 @@ const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 // Import the Contact model
-const Contact = require('./models/contact'); // Capital C
+const Contact = require('../models/contact');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
@@ -101,7 +100,7 @@ app.post('/api/contact', async (req, res) => {
   } catch (error) {
     console.error('Error saving contact submission:', error);
     res.status(500).json({ 
-      error: 'Failed to save your message :( Please try again.'
+      error: 'Failed to save your message. Please try again.'
     });
   }
 });
@@ -165,16 +164,14 @@ app.get('/api/health', async (req, res) => {
   }
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ message: 'Portfolio Backend API is running!' });
+});
+
 // Handle 404
 app.use('*', (req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
-
-// For local development
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-}
 
 module.exports = app;

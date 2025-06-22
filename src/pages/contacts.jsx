@@ -16,6 +16,8 @@ function Contacts() {
     error: null
   });
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -29,7 +31,7 @@ function Contacts() {
     setStatus({ submitting: true, success: false, error: null });
 
     try {
-      const response = await fetch('http://localhost:3001/api/contact', {
+      const response = await fetch('', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
