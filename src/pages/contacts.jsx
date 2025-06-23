@@ -17,7 +17,7 @@ function Contacts() {
   });
 
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -31,7 +31,8 @@ function Contacts() {
     setStatus({ submitting: true, success: false, error: null });
 
     try {
-      const response = await fetch('', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,10 +60,11 @@ function Contacts() {
       }, 5000);
       
     } catch (error) {
+      console.error('Contact form error:', error);
       setStatus({
         submitting: false,
         success: false,
-        error: error.message
+        error: error.message || 'Network error. Please try again.'
       });
     }
   };

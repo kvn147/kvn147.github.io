@@ -10,10 +10,11 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "deploy:prod": "VITE_API_URL=https://porfolio-backend-88t2ffe75-kevin-nguyens-projects-3e9024ef.vercel.app npm run build && gh-pages -d dist"
+    "deploy:prod": "VITE_API_URL=https://porfolio-backend-three.vercel.app npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
+    "@vercel/analytics": "^1.5.0",
     "gh-pages": "^6.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
