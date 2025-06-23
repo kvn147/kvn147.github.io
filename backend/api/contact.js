@@ -1,0 +1,92 @@
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+// Import the Contact model
+const Contact = require('../models/contact');
+
+// MongoDB connection with better error handling for serverless
+let isConnected = false;
+
+const connectToDatabase = async () => {
+  if (isConnected) {
+    return;
+  }
+
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      bufferCommands: false,
+      bufferMaxEntries: 0
+    });
+    isConnected = true;
+    console.log('Connected to MongoDB');
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
+    throw error;
+  }
+};
+
+export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', 'https://kvn147.github.io');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  try {
+    await connectToDatabase();
+    
+    const { name, email, message } = req.body;
+
+    // Basic validation
+    if (!name || !email || !message) {
+      return res.status(400).json({ 
+        error: 'All fields are required' 
+      });
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ 
+        error: 'Invalid email format' 
+      });
+    }
+
+    // Create new contact document
+    const newContact = new Contact({
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      message: message.trim()
+    });
+
+    // Save to database
+    await newContact.save();
+
+    console.log('New contact submission saved:', {
+      name: newContact.name,
+      email: newContact.email,
+      timestamp: newContact.createdAt
+    });
+
+    res.status(200).json({
+      message: 'Your message has been saved successfully! I will get back to you soon.',
+      id: newContact._id
+    });
+
+  } catch (error) {
+    console.error('Error saving contact submission:', error);
+    res.status(500).json({ 
+      error: 'Failed to save your message. Please try again.'
+    });
+  }
+}
