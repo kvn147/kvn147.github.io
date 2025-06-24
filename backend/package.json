@@ -2,10 +2,9 @@
   "name": "portfolio-backend",
   "version": "1.0.0",
   "description": "Backend for portfolio contact form",
-  "main": "index.js",
+  "main": "api/contact.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon server.js",
+    "dev": "vercel dev",
     "build": "echo 'Build complete'"
   },
   "keywords": [],
