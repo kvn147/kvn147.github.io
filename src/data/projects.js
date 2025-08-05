@@ -24,10 +24,10 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Fall Detection System",
+    title: "Embedded Control System",
     description: "A fall detection system using a microcontroller and accelerometer to detect sudden falls.",
     longDescription: "A fall detection system using a microcontroller and accelerometer to detect sudden falls.",
-    technologies: ["C", "IAR Workbench IDE", "Hardware"],
+    technologies: ["C", "IAR Workbench IDE", "Microcontroller"],
     githubUrl: "https://github.com/kvn147/Fall-Detection-System",
     liveUrl: null,
     featured: true,
@@ -37,12 +37,25 @@ export const projects = [
     id: 4,
     title: "Personal Portfolio Website",
     description: "My personal portfolio website showcasing my projects and skills.",
-    longDescription: "A personal portfolio website built with React, showcasing my projects, skills, and experiences.",
-    technologies: ["Javascript", "React+Vite", "Express.js", "Tailwind CSS"],
+    longDescription: "A personal portfolio website built with React+Vite frontend and Vercel backend, showcasing my projects, skills, and experiences.",
+    technologies: ["Vercel", "Javascript", "Express", "MongoDB", "Tailwind"],
     githubUrl: "https://github.com/kvn147/kvn147.github.io",
     liveUrl: null,
     featured: false,
-    category: "Web Development"}
+    category: "Web Development"
+  },
+  {
+    id: 5,
+    title: "333gle Search Engine",
+    description: "High-Performance Document Search Engine.",
+    longDescription: "A high-performance search engine built with C/C++ backend using data structures to query.",
+    technologies: ["C/C++", "POSIX", "HTML/CSS", "Network Programming"],
+    githubUrl: null,
+    liveUrl: null,
+    imageUrl: "/images/333gle.png",
+    featured: false,
+    category: "Systems Programming"
+  }
 ];
 
 // Helper function to get featured projects

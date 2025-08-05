@@ -28,7 +28,7 @@ function About() {
           <div className="text-2xl lg:text-4xl font-semibold">About Me</div>
           <div className="text-base lg:text-lg text-left">
             I am a transfer student at the University of Washington, pursuing my undergrad in Computer Science with a planned graduation of December 2026. 
-            I have a strong interest in full-stack development, embedded systems, and in new technologies of AI/ML. In my free time, I enjoy working on personal projects like web applications, contributing to open source, and learning about the latest trends in the tech industry.
+            I have a strong interest in full-stack development, embedded systems, and in new technologies of AI/ML. In my free time, I enjoy working on personal projects like web applications, contributing to open source, or whatever else I find interesting at the moment!
           </div>
         </div>
         <div className="lg:w-2/5 flex items-center justify-center lg:justify-end">

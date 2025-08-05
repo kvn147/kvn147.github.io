@@ -30,6 +30,7 @@ export default async function handler(req, res) {
   // Set comprehensive CORS headers
   const allowedOrigins = [
     'https://kvn147.github.io',
+    'https://kevinn.me',
     'http://localhost:3000',
     'http://localhost:5173', // Vite dev server
     'http://127.0.0.1:5173'
