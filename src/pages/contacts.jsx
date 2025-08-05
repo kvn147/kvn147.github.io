@@ -23,7 +23,7 @@ function Contacts() {
     }
     
     // For production deployment on GitHub Pages
-    if (window.location.hostname === 'kvn147.github.io') {
+    if (window.location.hostname === 'kvn147.github.io' || window.location.hostname === 'kevinn.me') {
       return 'https://porfolio-backend-2byrsz1jz-kevin-nguyens-projects-3e9024ef.vercel.app';
     }
     
