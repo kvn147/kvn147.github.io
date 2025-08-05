@@ -24,7 +24,7 @@ function Contacts() {
     
     // For production deployment on GitHub Pages
     if (window.location.hostname === 'kvn147.github.io') {
-      return 'https://porfolio-backend-bd89l0jqp-kevin-nguyens-projects-3e9024ef.vercel.app'; // Replace with your actual Vercel URL
+      return 'https://porfolio-backend-2byrsz1jz-kevin-nguyens-projects-3e9024ef.vercel.app';
     }
     
     // For local development
