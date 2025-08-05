@@ -4,8 +4,7 @@
   "description": "Backend for portfolio contact form",
   "main": "api/contact.js",
   "scripts": {
-    "dev": "vercel dev",
-    "build": "echo 'Build complete'"
+    "dev": "vercel dev"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +17,8 @@
     "express-rate-limit": "^6.7.0",
     "mongodb": "^6.17.0",
     "mongoose": "^8.16.0",
-    "nodemailer": "^7.0.3"
+    "nodemailer": "^7.0.3",
+    "vercel": "^44.7.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

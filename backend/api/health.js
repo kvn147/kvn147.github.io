@@ -13,8 +13,7 @@ const connectToDatabase = async () => {
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      bufferCommands: false,
-      bufferMaxEntries: 0
+      bufferCommands: false
     });
     isConnected = true;
     console.log('Connected to MongoDB');

@@ -16,8 +16,7 @@ const connectToDatabase = async () => {
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      bufferCommands: false,
-      bufferMaxEntries: 0
+      bufferCommands: false
     });
     isConnected = true;
     console.log('Connected to MongoDB');
@@ -28,11 +27,27 @@ const connectToDatabase = async () => {
 };
 
 export default async function handler(req, res) {
-  // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', 'https://kvn147.github.io');
+  // Set comprehensive CORS headers
+  const allowedOrigins = [
+    'https://kvn147.github.io',
+    'http://localhost:3000',
+    'http://localhost:5173', // Vite dev server
+    'http://127.0.0.1:5173'
+  ];
+  
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    // Fallback for GitHub Pages
+    res.setHeader('Access-Control-Allow-Origin', 'https://kvn147.github.io');
+  }
+  
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
+  // Handle preflight OPTIONS request
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
@@ -51,6 +66,19 @@ export default async function handler(req, res) {
     if (!name || !email || !message) {
       return res.status(400).json({ 
         error: 'All fields are required' 
+      });
+    }
+
+    // More detailed validation
+    if (name.trim().length < 2) {
+      return res.status(400).json({ 
+        error: 'Name must be at least 2 characters long' 
+      });
+    }
+
+    if (message.trim().length < 10) {
+      return res.status(400).json({ 
+        error: 'Message must be at least 10 characters long' 
       });
     }
 
@@ -85,6 +113,20 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Error saving contact submission:', error);
+    
+    // Handle specific MongoDB errors
+    if (error.name === 'ValidationError') {
+      return res.status(400).json({ 
+        error: 'Invalid data provided. Please check your input.' 
+      });
+    }
+    
+    if (error.name === 'MongoServerError' && error.code === 11000) {
+      return res.status(400).json({ 
+        error: 'This message has already been submitted.' 
+      });
+    }
+
     res.status(500).json({ 
       error: 'Failed to save your message. Please try again.'
     });

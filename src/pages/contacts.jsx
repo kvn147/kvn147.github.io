@@ -16,7 +16,20 @@ function Contacts() {
     error: null
   });
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+  // Updated API URL logic
+  const getApiUrl = () => {
+    if (import.meta.env.VITE_API_URL) {
+      return import.meta.env.VITE_API_URL;
+    }
+    
+    // For production deployment on GitHub Pages
+    if (window.location.hostname === 'kvn147.github.io') {
+      return 'https://porfolio-backend-bd89l0jqp-kevin-nguyens-projects-3e9024ef.vercel.app'; // Replace with your actual Vercel URL
+    }
+    
+    // For local development
+    return 'http://localhost:3001';
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +44,9 @@ function Contacts() {
     setStatus({ submitting: true, success: false, error: null });
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const apiUrl = getApiUrl();
+      console.log('Attempting to submit to:', `${apiUrl}/api/contact`); // Debug log
+      
       const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: {
@@ -43,7 +58,7 @@ function Contacts() {
       const data = await response.json();
       
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
+        throw new Error(data.error || `Server error: ${response.status}`);
       }
 
       // Clear form on success
@@ -64,7 +79,7 @@ function Contacts() {
       setStatus({
         submitting: false,
         success: false,
-        error: error.message || 'Network error. Please try again.'
+        error: error.message || 'Network error. Please try again later.'
       });
     }
   };
@@ -157,7 +172,7 @@ function Contacts() {
 
               <button 
                 type="submit" 
-                className={`w-full md:w-auto px-10 py-2 ${status.submitting ? 'bg-zinc-500' : 'bg-zinc-800'} flex justify-center items-center gap-2.5`}
+                className={`w-full md:w-auto px-10 py-2 ${status.submitting ? 'bg-zinc-500' : 'bg-zinc-800'} flex justify-center items-center gap-2.5 rounded-lg transition-colors duration-200 ${!status.submitting ? 'hover:bg-zinc-700' : ''}`}
                 disabled={status.submitting}
               >
                 <div className="text-center justify-center text-white text-xl font-semibold font-ubuntu leading-loose">
