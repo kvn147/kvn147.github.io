@@ -31,6 +31,7 @@ export default async function handler(req, res) {
   const allowedOrigins = [
     'https://kvn147.github.io',
     'https://kevinn.me',
+    'https://www.kevinn.me',
     'http://localhost:3000',
     'http://localhost:5173', // Vite dev server
     'http://127.0.0.1:5173'
@@ -41,7 +42,7 @@ export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', origin);
   } else {
     // Fallback for GitHub Pages
-    res.setHeader('Access-Control-Allow-Origin', 'https://kvn147.github.io');
+    res.setHeader('Access-Control-Allow-Origin', 'https://kevinn.me');
   }
   
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
