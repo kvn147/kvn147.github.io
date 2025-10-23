@@ -21,12 +21,12 @@ function Contacts() {
     if (import.meta.env.VITE_API_URL) {
       return import.meta.env.VITE_API_URL;
     }
-    
+
     // For production deployment on GitHub Pages
-    if (window.location.hostname === 'kvn147.github.io' || window.location.hostname === 'kevinn.me') {
+    if (window.location.hostname === 'kvn147.github.io' || window.location.hostname === 'kevinn.me' || window.location.hostname === 'www.kevinn.me') {
       return 'https://kevinn-me.vercel.app';
     }
-    
+
     // For local development
     return 'http://localhost:3001';
   };
@@ -129,14 +129,16 @@ function Contacts() {
           <div className="flex flex-col justify-start items-center md:items-start gap-10 w-full md:w-auto order-2">
             <form onSubmit={handleSubmit} className="flex flex-col justify-start items-center md:items-start gap-5 w-full">
               <div className="w-full md:w-[530px] px-7 py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5 rounded-lg">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Name" 
-                  className="flex-1 bg-transparent outline-none text-zinc-800 text-base font-normal font-ubuntu leading-relaxed" 
+                  placeholder="Name"
+                  className="flex-1 bg-transparent outline-none text-zinc-800 text-base font-normal font-ubuntu leading-relaxed"
                   required
+                  minLength={2}
+                  title="Name must be at least 2 characters long"
                 />
               </div>
               <div className="w-full md:w-[530px] px-7 py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5 rounded-lg">
@@ -151,13 +153,15 @@ function Contacts() {
                 />
               </div>
               <div className="w-full md:w-[530px] px-7 py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5 rounded-lg">
-                <textarea 
+                <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Type your message here" 
+                  placeholder="Type your message here"
                   className="flex-1 bg-transparent outline-none text-zinc-800 text-base font-normal font-ubuntu leading-relaxed h-40 resize-none"
                   required
+                  minLength={10}
+                  title="Message must be at least 10 characters long"
                 ></textarea>
               </div>
               
