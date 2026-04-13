@@ -23,11 +23,16 @@ function ProjectCard({ project }) {
 
       {/* Project Content */}
       <div className="p-6">
-        {/* Category Badge */}
-        <div className="inline-block mb-3">
-          <span className="px-3 py-1 bg-[#23d5ab]/20 text-[#23a6d5] text-sm font-ubuntu font-medium rounded-full">
-            {project.category}
-          </span>
+        {/* Category Badges */}
+        <div className="flex flex-wrap gap-2 mb-3">
+          {(Array.isArray(project.category) ? project.category : [project.category]).map((cat, index) => (
+            <span
+              key={index}
+              className="px-3 py-1 bg-[#23d5ab]/20 text-[#23a6d5] text-sm font-ubuntu font-medium rounded-full"
+            >
+              {cat}
+            </span>
+          ))}
         </div>
 
         {/* Title */}

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import linkedin from "../assets/linkedin-icon.svg";
 import github from "../assets/github-icon.svg";
 import mail from "../assets/mail-icon.svg";
-import { Link } from 'react-router-dom';
 
 function Contacts() {
   const [formData, setFormData] = useState({
@@ -86,7 +85,7 @@ function Contacts() {
 
   return (
     <div data-property="Desktop" className="self-stretch px-4 md:px-24 pb-16 bg-white flex flex-col justify-start items-center gap-2.5">
-      <div className="pt-16 border-t-2 border-black/20 flex flex-col justify-start items-center gap-16 w-full">
+      <div className="pt-16 flex flex-col justify-start items-center gap-16 w-full">
         <div className="flex flex-col md:inline-flex md:flex-row justify-start items-center md:items-start gap-12 md:gap-48 w-full">
           <div className="flex flex-col justify-start items-center md:items-start gap-6 lg:gap-10 w-full md:w-auto order-1">
             <div className="flex flex-col justify-start items-center md:items-start gap-10">
@@ -95,70 +94,70 @@ function Contacts() {
             </div>
 
             {/* LinkedIn Link */}
-            <Link to="https://www.linkedin.com/in/kevin1nguyen" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/kevin1nguyen" target="_blank" rel="noopener noreferrer">
               <div className="flex items-center gap-1 lg:gap-3 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
                 <div className="w-9 h-9 relative overflow-hidden">
                     <img src={linkedin} alt="LinkedIn" className="w-7 h-7 filter brightness-0" />
                 </div>
                 <p className="text-zinc-800 text-sm lg:text-base font-normal font-ubuntu hover:text-[#23a6d5]">linkedin.com/kevin1nguyen</p>
               </div>
-            </Link>
+            </a>
 
             {/* GitHub Link */}
-            <Link to="https://www.github.com/kvn147" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.github.com/kvn147" target="_blank" rel="noopener noreferrer">
               <div className="flex items-center gap-1 lg:gap-3 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
                 <div className="w-9 h-9 relative overflow-hidden">
                     <img src={github} alt="GitHub" className="w-7 h-7 filter brightness-0" />
                 </div>
                 <p className="text-zinc-800 text-sm lg:text-base font-normal font-ubuntu hover:text-[#23a6d5]">github.com/kvn147</p>
               </div>
-            </Link>
+            </a>
 
             {/* Email Link */}
-            <Link to="mailto:kevnguyen49@gmail.com" target="_blank" rel="noopener noreferrer">
+            <a href="mailto:kevnguyen49@gmail.com" target="_blank" rel="noopener noreferrer">
               <div className="flex items-center gap-1 lg:gap-3 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
                 <div className="w-9 h-9 relative overflow-hidden">
                   <img src={mail} alt="Mail" className="w-7 h-7 filter brightness-0" />
                 </div>
               <p className="text-zinc-800 text-sm lg:text-base font-normal font-ubuntu hover:text-[#23a6d5]">kevnguyen49 [at] gmail [dot] com</p>
               </div>
-            </Link>
+            </a>
           </div>
 
           {/* Contact Form */}
-          <div className="flex flex-col justify-start items-center md:items-start gap-10 w-full md:w-auto order-2">
+          <div className="flex flex-col justify-start items-center md:items-start gap-10 w-full md:flex-1 md:max-w-[530px] order-2">
             <form onSubmit={handleSubmit} className="flex flex-col justify-start items-center md:items-start gap-5 w-full">
-              <div className="w-full md:w-[530px] px-7 py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5 rounded-lg">
+              <div className="w-full px-5 sm:px-7 py-4 sm:py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5 rounded-lg">
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Name"
-                  className="flex-1 bg-transparent outline-none text-zinc-800 text-base font-normal font-ubuntu leading-relaxed"
+                  className="flex-1 bg-transparent outline-none text-zinc-800 text-sm sm:text-base font-normal font-ubuntu leading-relaxed"
                   required
                   minLength={2}
                   title="Name must be at least 2 characters long"
                 />
               </div>
-              <div className="w-full md:w-[530px] px-7 py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5 rounded-lg">
-                <input 
-                  type="email" 
+              <div className="w-full px-5 sm:px-7 py-4 sm:py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5 rounded-lg">
+                <input
+                  type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="Email" 
-                  className="flex-1 bg-transparent outline-none text-zinc-800 text-base font-normal font-ubuntu leading-relaxed" 
+                  placeholder="Email"
+                  className="flex-1 bg-transparent outline-none text-zinc-800 text-sm sm:text-base font-normal font-ubuntu leading-relaxed"
                   required
                 />
               </div>
-              <div className="w-full md:w-[530px] px-7 py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5 rounded-lg">
+              <div className="w-full px-5 sm:px-7 py-4 sm:py-5 bg-zinc-100 inline-flex justify-start items-start gap-2.5 rounded-lg">
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Type your message here"
-                  className="flex-1 bg-transparent outline-none text-zinc-800 text-base font-normal font-ubuntu leading-relaxed h-40 resize-none"
+                  className="flex-1 bg-transparent outline-none text-zinc-800 text-sm sm:text-base font-normal font-ubuntu leading-relaxed h-32 sm:h-40 resize-none"
                   required
                   minLength={10}
                   title="Message must be at least 10 characters long"

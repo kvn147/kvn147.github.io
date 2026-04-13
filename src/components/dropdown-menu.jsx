@@ -1,5 +1,4 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { Link } from 'react-router-dom';
 
 const DropdownMenu = () => {
     return (
@@ -14,23 +13,23 @@ const DropdownMenu = () => {
                 <div className="py-4">
                     <MenuItem>
                         {({ active }) => (
-                            <Link to="/" className={`${active ? 'bg-slate-400' : ''} block px-4 py-2 text-black text-md font-semibold font-ubuntu uppercase`}>
+                            <a href="#home" className={`${active ? 'bg-slate-400' : ''} block px-4 py-2 text-black text-md font-semibold font-ubuntu uppercase`}>
                                 HOME
-                            </Link>
+                            </a>
                         )}
                     </MenuItem>
                     <MenuItem>
                         {({ active }) => (
-                            <Link to="/projects" className={`${active ? 'bg-slate-400' : ''} block px-4 py-2 text-black text-md font-semibold font-ubuntu uppercase`}>
+                            <a href="#projects" className={`${active ? 'bg-slate-400' : ''} block px-4 py-2 text-black text-md font-semibold font-ubuntu uppercase`}>
                                 PROJECTS
-                            </Link>
+                            </a>
                         )}
                     </MenuItem>
                     <MenuItem>
                         {({ active }) => (
-                            <Link to="/contacts" className={`${active ? 'bg-slate-400' : ''} block px-4 py-2 text-black text-md font-semibold font-ubuntu uppercase`}>
+                            <a href="#contacts" className={`${active ? 'bg-slate-400' : ''} block px-4 py-2 text-black text-md font-semibold font-ubuntu uppercase`}>
                                 CONTACTS
-                            </Link>
+                            </a>
                         )}
                     </MenuItem>
                 </div>
