@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ProjectCard from '../components/project_card';
 import { projects } from '../data/projects';
 
-function Projects() {
+function Projects({ isDarkMode }) {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
@@ -52,15 +52,15 @@ function Projects() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? 'bg-[#0f1b3d]' : 'bg-gray-50'}`}>
       {/* Hero Section */}
-      <div className="bg-white">
+      <div className={`${isDarkMode ? 'bg-[#0b132b]' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-ubuntu font-bold text-gray-800 mb-6">
+            <h2 className={`text-4xl md:text-5xl font-ubuntu font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
               Current Projects
             </h2>
-            <p className="text-xl font-ubuntu text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className={`text-xl font-ubuntu max-w-2xl mx-auto leading-relaxed ${isDarkMode ? 'text-slate-200' : 'text-gray-600'}`}>
               A collection of projects I've worked on, ranging from web applications to mobile apps and open-source contributions.
             </p>
           </div>
@@ -78,7 +78,7 @@ function Projects() {
               className="animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} isDarkMode={isDarkMode} />
             </div>
           ))}
         </div>
@@ -87,10 +87,10 @@ function Projects() {
         {filteredProjects.length === 0 && (
           <div className="text-center py-16">
             <div className="text-gray-400 text-6xl mb-4">📁</div>
-            <h3 className="text-xl font-ubuntu font-semibold text-gray-600 mb-2">
+            <h3 className={`text-xl font-ubuntu font-semibold mb-2 ${isDarkMode ? 'text-slate-200' : 'text-gray-600'}`}>
               No projects found
             </h3>
-            <p className="text-gray-500 font-ubuntu">
+            <p className={`font-ubuntu ${isDarkMode ? 'text-slate-300' : 'text-gray-500'}`}>
               No projects match the selected category.
             </p>
           </div>

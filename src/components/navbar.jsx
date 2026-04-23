@@ -7,9 +7,9 @@ const NAV_SECTIONS = [
   { id: 'contacts', label: 'Contacts' },
 ];
 
-function Navbar() {
+function Navbar({ isDarkMode }) {
   const [activeSection, setActiveSection] = useState('home');
-  const isLightSection = activeSection === 'about' || activeSection === 'projects' || activeSection === 'contacts';
+  const isLightSection = !isDarkMode && (activeSection === 'about' || activeSection === 'projects' || activeSection === 'contacts');
 
   const activeIndex = NAV_SECTIONS.findIndex((section) => section.id === activeSection);
   const safeActiveIndex = activeIndex >= 0 ? activeIndex : 0;
@@ -78,7 +78,7 @@ function Navbar() {
     <nav className="fixed left-4 top-1/2 -translate-y-1/2 z-30 group">
       <div className="relative">
         <span
-          className={`absolute left-3 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full transition-opacity duration-200 group-hover:opacity-0 group-focus-within:opacity-0 ${
+          className={`absolute left-7 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full transition-opacity duration-200 group-hover:opacity-0 group-focus-within:opacity-0 ${
             isLightSection ? 'bg-black/80' : 'bg-white/90'
           }`}
           aria-hidden="true"

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, isDarkMode }) {
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+    <div className={`rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-xl ${isDarkMode ? 'bg-[#142652]' : 'bg-white'}`}>
       {/* Project Image */}
-      <div className="h-48 bg-gray-200 overflow-hidden">
+      <div className={`h-48 overflow-hidden ${isDarkMode ? 'bg-slate-800' : 'bg-gray-200'}`}>
         {project.imageUrl ? (
           <img 
             src={project.imageUrl} 
@@ -36,12 +36,12 @@ function ProjectCard({ project }) {
         </div>
 
         {/* Title */}
-        <h3 className="text-xl font-ubuntu font-bold text-gray-800 mb-3 line-clamp-2">
+        <h3 className={`text-xl font-ubuntu font-bold mb-3 line-clamp-2 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>
           {project.title}
         </h3>
 
         {/* Description */}
-        <p className="text-gray-600 font-ubuntu text-base leading-relaxed mb-4 line-clamp-3">
+        <p className={`font-ubuntu text-base leading-relaxed mb-4 line-clamp-3 ${isDarkMode ? 'text-slate-200' : 'text-gray-600'}`}>
           {project.description}
         </p>
 
@@ -51,13 +51,13 @@ function ProjectCard({ project }) {
             {project.technologies.slice(0, 4).map((tech, index) => (
               <span 
                 key={index}
-                className="px-2 py-1 bg-gray-100 text-gray-700 text-sm font-ubuntu rounded"
+                className={`px-2 py-1 text-sm font-ubuntu rounded ${isDarkMode ? 'bg-slate-700 text-slate-100' : 'bg-gray-100 text-gray-700'}`}
               >
                 {tech}
               </span>
             ))}
             {project.technologies.length > 4 && (
-              <span className="px-2 py-1 bg-gray-100 text-gray-700 text-sm font-ubuntu rounded">
+              <span className={`px-2 py-1 text-sm font-ubuntu rounded ${isDarkMode ? 'bg-slate-700 text-slate-100' : 'bg-gray-100 text-gray-700'}`}>
                 +{project.technologies.length - 4} more
               </span>
             )}
@@ -71,7 +71,7 @@ function ProjectCard({ project }) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 px-4 py-2 bg-gray-800 text-white text-center font-ubuntu font-medium rounded transition-colors duration-200 hover:bg-gray-700"
+              className={`flex-1 px-4 py-2 text-white text-center font-ubuntu font-medium rounded transition-colors duration-200 ${isDarkMode ? 'bg-slate-900 hover:bg-slate-800' : 'bg-gray-800 hover:bg-gray-700'}`}
             >
               GitHub
             </a>
